@@ -1,0 +1,31 @@
+#write by zereft29
+cmake_minimum_required(VERSION 3.5.0)
+project(DLP)
+
+set(SOURCES
+    src/blscapture.cpp
+    src/blwebsites.cpp
+    src/killProcess.cpp
+    src/main.cpp
+)
+
+# Create the executable target
+add_executable(DLP ${SOURCES})
+
+# Link necessary libraries with the executable
+target_link_libraries(DLP PRIVATE ws2_32 Fwpuclnt iphlpapi -static-libgcc -static-libstdc++)
+
+# Set the C++ standard to 11 (or higher, if desired)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Set the output directory for the executable file
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} config)  # Thay đổi đường dẫn đầu ra thành 'config'
+
+# Add include directories for header files
+target_include_directories(DLP PRIVATE
+    BlScreenlib
+    BlWebsites
+    BlScreenlib/json.hpp
+)
+
