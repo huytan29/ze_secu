@@ -1,21 +1,15 @@
-# Lancs DLP
-
-Lancs DLP agent project 
-
-## Tham khảo
-
 ### Windows File System Filter Driver
 
-#### Giới thiệu
+#### Introduce
 - https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/filter-manager-concepts
 
-#### Code mẫu
+#### Code
 - https://learn.microsoft.com/en-us/windows-hardware/drivers/samples/file-system-driver-samples
 
-#### Code mẫu block device theo type
+#### Example for Code block device with type
 - https://www.codeproject.com/Articles/5341729/Mini-filter-to-block-certain-media-types
 
-#### Hooking với MS Detours
+#### Hooking wiht MS Detours
 - https://github.com/microsoft/Detours
 - https://github.com/Microsoft/Detours/wiki/Using-Detours
 
