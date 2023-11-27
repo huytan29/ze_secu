@@ -90,3 +90,4 @@ HWND CreateFullScreenWindow(HINSTANCE hInstance)
 		mi.rcMonitor.bottom - mi.rcMonitor.top,
 		hwnd, NULL, hInstance, 0);
 }
+// author: Tan Huy - ZEREFT29

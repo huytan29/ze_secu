@@ -1,3 +1,5 @@
+// author: Tan Huy - ZEREFT29
+
 #include "FilterIP.h"
 #include <windows.h>
 #include <initguid.h>

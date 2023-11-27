@@ -1,4 +1,6 @@
-#pragma onceeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+// author: Tan Huy - ZEREFT29
+
+#pragma once
 #include <Windows.h>
 #include <minwindef.h>
 #include <set>

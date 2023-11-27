@@ -1,3 +1,5 @@
+// author: Tan Huy - ZEREFT29
+
 #include "RuleParser.h"
 #include <cstdint>
 #include <regex>
