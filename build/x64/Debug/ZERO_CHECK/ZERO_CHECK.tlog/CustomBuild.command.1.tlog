@@ -1,0 +1,10 @@
+^F:\TRAINTOOL\FINALFORM\TESTCODE2\LANCS-DLP\BUILD\CMAKEFILES\2F847C91D7515ACBBFACA0B1B8340905\GENERATE.STAMP.RULE
+setlocal
+C:\msys64\mingw64\bin\cmake.exe -SF:/trainTOOL/finalForm/testcode2/lancs-dlp -BF:/trainTOOL/finalForm/testcode2/lancs-dlp/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file F:/trainTOOL/finalForm/testcode2/lancs-dlp/build/DLP.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

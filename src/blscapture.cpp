@@ -1,87 +1,86 @@
-//#include "define_header.h"
+// #include "define_header.h"
 #include "BlScreenlib/blockScreen.h"
 #include "BlScreenlib/blockScreencore.h"
 #include "json.hpp"
 #include <cerrno>
+#include <codecvt> 
 
 using json = nlohmann::json;
 
-
 bool IsProcessInConfig(const std::string &processName)
 {
-	std::ifstream configFile("..\\config\\screen.json"); 
-	if (!configFile.is_open())
-	{
-		std::cerr << "Failed to open config file."<< std::strerror(errno) << std::endl;
-		return false;
-	}
+    std::ifstream configFile("..\\..\\config\\screen.json");
+    if (!configFile.is_open())
+    {
+        std::cerr << "Failed to open config file." << strerror(errno) << std::endl;
+        return false;
+    }
 
-	try
-	{
-		json configData;
-		configFile >> configData;
+    try
+    {
+        json configData;
+        configFile >> configData;
 
-		// Check if the process is in the list
-		for (const auto &app : configData)
-		{
-			if (app["ProcessName"] == processName)
-			{
-				return true;
-			}
-		}
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << "Error parsing config file: " << e.what() << std::endl;
-	}
+        // Check if the process is in the list
+        for (const auto &app : configData)
+        {
+            if (app["ProcessName"] == processName)
+            {
+                return true;
+            }
+        }
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << "Error parsing config file: " << e.what() << std::endl;
+    }
 
-	return false;
+    return false;
 }
 
 BOOL CALLBACK EnumWindowsProcHide(HWND hWnd, LPARAM lParam)
 {
-	if (IsWindowVisible(hWnd))
-	{
-		wchar_t windowTitle[256];
-		GetWindowTextW(hWnd, windowTitle, sizeof(windowTitle) / sizeof(wchar_t));
+    if (IsWindowVisible(hWnd))
+    {
+        wchar_t windowTitle[256];
+        GetWindowTextW(hWnd, windowTitle, sizeof(windowTitle) / sizeof(wchar_t));
 
-		// Get the process name of the hWnd window
-		DWORD processId;
-		GetWindowThreadProcessId(hWnd, &processId);
-		HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, processId);
-		if (hProcess != NULL)
-		{
-			wchar_t processName[MAX_PATH];
-			if (GetProcessImageFileNameW(hProcess, processName, MAX_PATH) > 0)
-			{
-				std::wstring processNameStr = processName;
-				size_t found = processNameStr.find_last_of(L"\\");
-				if (found != std::wstring::npos)
-				{
-					processNameStr = processNameStr.substr(found + 1); // get file .exe of process
-					if (IsProcessInConfig(std::wstring_convert<std::codecvt_utf8<wchar_t>>().to_bytes(processNameStr)))
-					{
-						AdjustDebugPrivs();
-						if (SetWindowDisplayAffinityForExternelProcess(hWnd, WDA_EXCLUDEFROMCAPTURE))
-							Sleep(10);
-					}
-				}
-			}
-			CloseHandle(hProcess);
-		}
-	}
-	return TRUE;
+        // Get the process name of the hWnd window
+        DWORD processId;
+        GetWindowThreadProcessId(hWnd, &processId);
+        HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, processId);
+        if (hProcess != NULL)
+        {
+            wchar_t processName[MAX_PATH];
+            if (GetProcessImageFileNameW(hProcess, processName, MAX_PATH) > 0)
+            {
+                std::wstring processNameStr = processName;
+                size_t found = processNameStr.find_last_of(L"\\");
+                if (found != std::wstring::npos)
+                {
+                    processNameStr = processNameStr.substr(found + 1); // get file .exe of process
+                    std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+                    if (IsProcessInConfig(converter.to_bytes(processNameStr)))
+                    {
+                        // ...
+                    }
+                }
+            }
+            CloseHandle(hProcess);
+        }
+    }
+    return TRUE;
 }
-
 
 BOOL CALLBACK EnumWindowsProcUnhide(HWND hWnd, LPARAM lParam)
 {
-    if (IsWindowVisible(hWnd)) {
-        AdjustDebugPrivs();
-        if (SetWindowDisplayAffinityForExternelProcess(hWnd, WDA_NONE))
-            Sleep(10);
-    }
-    return TRUE;
+	if (IsWindowVisible(hWnd))
+	{
+		AdjustDebugPrivs();
+		if (SetWindowDisplayAffinityForExternelProcess(hWnd, WDA_NONE))
+			Sleep(10);
+	}
+	return TRUE;
 }
 
 //
@@ -102,7 +101,6 @@ void Disable_ScreenShot()
 		return;
 	}
 
-
 	MSG msg;
 	while (GetMessage(&msg, NULL, 0, 0))
 	{
@@ -110,12 +108,10 @@ void Disable_ScreenShot()
 		DispatchMessage(&msg);
 	}
 
-
 	KillTimer(NULL, timerId);
 }
 
-
-void Enable_ScreenShot() 
+void Enable_ScreenShot()
 {
 	EnumWindows(EnumWindowsProcUnhide, 0);
 	std::cout << "_____________ENABLE-SCREEN-SHOT_____________" << std::endl;
@@ -162,18 +158,18 @@ int blockScreen(int argc, char *argv[])
 
 /*void blockScreen()
 {
-    std::string x;
-    std::cout << "Disable Screenshots (ON/OFF)" << std::endl;
-    std::cin >> x;
-    if (x == "1" || x == "ON" || x == "On" || x == "on")
-    {
-        EnumWindows(EnumWindowsProcHide, 0);
+	std::string x;
+	std::cout << "Disable Screenshots (ON/OFF)" << std::endl;
+	std::cin >> x;
+	if (x == "1" || x == "ON" || x == "On" || x == "on")
+	{
+		EnumWindows(EnumWindowsProcHide, 0);
 		Disable_ScreenShot();
-    }
-    else if (x == "0" || x == "OFF" || x == "Off" || x == "off")
-    {
-       EnumWindows(EnumWindowsProcUnhide, 0);
+	}
+	else if (x == "0" || x == "OFF" || x == "Off" || x == "off")
+	{
+	   EnumWindows(EnumWindowsProcUnhide, 0);
 	   Enable_ScreenShot();
-    }
+	}
 
 }*/

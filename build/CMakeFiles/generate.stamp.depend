@@ -1,0 +1,25 @@
+# CMake generation dependency list for this directory.
+C:/msys64/mingw64/share/cmake/Modules/CMakeCInformation.cmake
+C:/msys64/mingw64/share/cmake/Modules/CMakeCXXInformation.cmake
+C:/msys64/mingw64/share/cmake/Modules/CMakeCommonLanguageInclude.cmake
+C:/msys64/mingw64/share/cmake/Modules/CMakeGenericSystem.cmake
+C:/msys64/mingw64/share/cmake/Modules/CMakeInitializeConfigs.cmake
+C:/msys64/mingw64/share/cmake/Modules/CMakeLanguageInformation.cmake
+C:/msys64/mingw64/share/cmake/Modules/CMakeRCInformation.cmake
+C:/msys64/mingw64/share/cmake/Modules/CMakeSystemSpecificInformation.cmake
+C:/msys64/mingw64/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake
+C:/msys64/mingw64/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+C:/msys64/mingw64/share/cmake/Modules/Compiler/MSVC-C.cmake
+C:/msys64/mingw64/share/cmake/Modules/Compiler/MSVC-CXX.cmake
+C:/msys64/mingw64/share/cmake/Modules/Compiler/MSVC.cmake
+C:/msys64/mingw64/share/cmake/Modules/Platform/Windows-Initialize.cmake
+C:/msys64/mingw64/share/cmake/Modules/Platform/Windows-MSVC-C.cmake
+C:/msys64/mingw64/share/cmake/Modules/Platform/Windows-MSVC-CXX.cmake
+C:/msys64/mingw64/share/cmake/Modules/Platform/Windows-MSVC.cmake
+C:/msys64/mingw64/share/cmake/Modules/Platform/Windows.cmake
+C:/msys64/mingw64/share/cmake/Modules/Platform/WindowsPaths.cmake
+F:/trainTOOL/finalForm/testcode2/lancs-dlp/CMakeLists.txt
+F:/trainTOOL/finalForm/testcode2/lancs-dlp/build/CMakeFiles/3.27.7/CMakeCCompiler.cmake
+F:/trainTOOL/finalForm/testcode2/lancs-dlp/build/CMakeFiles/3.27.7/CMakeCXXCompiler.cmake
+F:/trainTOOL/finalForm/testcode2/lancs-dlp/build/CMakeFiles/3.27.7/CMakeRCCompiler.cmake
+F:/trainTOOL/finalForm/testcode2/lancs-dlp/build/CMakeFiles/3.27.7/CMakeSystem.cmake

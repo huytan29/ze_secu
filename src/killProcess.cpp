@@ -146,7 +146,7 @@ int blockApp() {
         std::this_thread::sleep_for(10s);
         return 0;
     }
-    std::ifstream configFile("..\\config\\kprocess.json");
+    std::ifstream configFile("..\\..\\config\\kprocess.json");
     if (!configFile.is_open()) {
         std::cerr << "Failed to open config.json" << std::endl;
         return -1;

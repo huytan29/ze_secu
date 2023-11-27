@@ -12,6 +12,7 @@
 #include <unordered_map>
 #include <vector>
 #include <fstream>
+#include <locale>
 
 #include <stdio.h>
 #include <stdlib.h>
