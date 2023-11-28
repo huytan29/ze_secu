@@ -1,6 +1,6 @@
 // #include "define_header.h"
-#include "BlScreenlib/blockScreen.h"
-#include "BlScreenlib/blockScreencore.h"
+#include "headers/BlScreenlib/blockScreen.h"
+#include "headers/BlScreenlib/blockScreencore.h"
 #include "json.hpp"
 #include <cerrno>
 #include <codecvt> 
